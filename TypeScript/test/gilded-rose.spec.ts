@@ -1,7 +1,10 @@
+import Shop from '../src/Shop';
+
 describe('Gilded Rose', () => {
 
     it('Should build', () => {
-        expect(true).toBe(true);
+        let shop = new Shop();
+        expect(shop).toBeInstanceOf(Shop);
     });
 
 });
