@@ -1,15 +1,15 @@
-﻿using GildedRose;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace GildedRose.Tests;
 
-namespace GildedRose.Tests
+public class ShopTests
 {
-    [TestClass]
-    public class ShopTests
+    [SetUp]
+    public void Setup()
     {
-        [TestMethod]
-        public void Should_Build()
-        {
-            Shop shop = new Shop();
-        }
+    }
+
+    [Test]
+    public void Should_Build()
+    {
+        Shop shop = new Shop();
     }
 }
