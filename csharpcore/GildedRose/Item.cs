@@ -2,9 +2,9 @@ namespace GildedRose
 {
     public class Item
     {
-        protected string Name { get; set; }
-        protected int SellIn { get; set; }
-        protected float Quality { get; set; }
+        public string Name { get; }
+        public int SellIn { get; set; }
+        public float Quality { get; set; }
         private bool _IsConjured { get; set; }
 
         public bool IsConjured
