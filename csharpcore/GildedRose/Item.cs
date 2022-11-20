@@ -3,28 +3,14 @@ namespace GildedRose
     public class Item
     {
         public string Name { get; }
-        public int SellIn { get; set; }
-        public float Quality { get; set; }
-        private bool _IsConjured { get; set; }
-
-        public bool IsConjured
+        public int SellIn { get; protected set; }
+        protected float _quality;
+        public float Quality
         {
-            get => _IsConjured;
-            set
-            {
-                _IsConjured = value;
-                if (value)
-                {
-                    QualityDegradation = 2;
-                }
-                else
-                {
-                    QualityDegradation = 1;
-                }
-            }
+            get => _quality;
+            set => ChangeQuality(value);
         }
-
-        protected int QualityDegradation { get; set; } = 1;
+        public bool IsConjured { get; }
 
         public Item(string name, int sellIn, float quality, bool isConjured = false)
         {
@@ -32,7 +18,6 @@ namespace GildedRose
             SellIn = sellIn;
             Quality = quality;
             IsConjured = isConjured;
-            VerifyQuality();
         }
 
         public void Update()
@@ -43,21 +28,33 @@ namespace GildedRose
 
         protected void UpdateSellIn()
         {
-            SellIn -= QualityDegradation;
+            SellIn -= 1;
         }
 
         protected virtual void UpdateQuality()
         {
-            Quality -= QualityDegradation;
-            VerifyQuality();
+            
+            Quality -= GetQualityDegradation();
         }
 
-        protected virtual void VerifyQuality()
+        protected float GetQualityDegradation()
         {
-            if (Quality is < 0 or > 50)
+            var qualityDegradation = 1;
+            if (SellIn < 0)
+                qualityDegradation *= 2;
+            if (IsConjured)
+                qualityDegradation *= 2;
+            return qualityDegradation;
+        }
+
+        protected virtual void ChangeQuality(float value)
+        {
+            _quality = value switch
             {
-                throw new ArgumentException();
-            }
+                < 0 => 0,
+                > 50 => 50,
+                _ => value
+            };
         }
     }
 }

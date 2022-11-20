@@ -2,7 +2,8 @@
 
 public class BackstagePasse : Item
 {
-    public BackstagePasse(string name, int sellIn, float quality, bool isConjured) : base(name, sellIn, quality, isConjured)
+    public BackstagePasse(string name, int sellIn, float quality, bool isConjured = false) : base(name, sellIn, quality,
+        isConjured)
     {
     }
 
@@ -11,13 +12,16 @@ public class BackstagePasse : Item
         switch (SellIn)
         {
             case <= 10 and > 5:
-                Quality += (QualityDegradation * 2);
+                Quality += (GetQualityDegradation() * 2);
                 break;
-            case <= 5 and >0:
-                Quality += (QualityDegradation * 3);
+            case <= 5 and > 0:
+                Quality += (GetQualityDegradation() * 3);
                 break;
-            case <=0 :
+            case <= 0:
                 Quality = 0;
+                break;
+            default:
+                Quality += GetQualityDegradation();
                 break;
         }
     }

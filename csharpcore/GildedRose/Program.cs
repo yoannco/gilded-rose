@@ -1,4 +1,4 @@
 ﻿using GildedRose;
 
-Item item = new Item("Test", 12, 100, true);
+var item = new Sulfuras("Test", 12, 40);
 Console.WriteLine("start!");

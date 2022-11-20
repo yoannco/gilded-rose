@@ -2,7 +2,7 @@ namespace GildedRose
 {
     public class Shop
     {
-        private List<Item> Items { get; set; }
+        public List<Item> Items { get; private set; }
         
         public Shop(List<Item> items)
         {
