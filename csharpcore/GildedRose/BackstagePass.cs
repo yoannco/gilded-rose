@@ -1,8 +1,8 @@
 ﻿namespace GildedRose;
 
-public class BackstagePasse : Item
+public class BackstagePass : Item
 {
-    public BackstagePasse(string name, int sellIn, float quality, bool isConjured = false) : base(name, sellIn, quality,
+    public BackstagePass(string name, int sellIn, float quality, bool isConjured = false) : base(name, sellIn, quality,
         isConjured)
     {
     }

@@ -29,11 +29,11 @@ public class ShopTests
         _overQualityItem = new("item", 30, 0);
         _sulfuras = new Sulfuras("sulfuras", 30, 30);
         _conjuredSulfuras = new Sulfuras("conjuredSulfuras", 30, 30, true);
-        _backstagePass = new BackstagePasse("backstagePass", 30, 30);
-        _conguredBackstagePass = new BackstagePasse("conguredBackstagePass", 30, 30, true);
-        _overSellInBackstagePass = new BackstagePasse("conguredBackstagePass", -1, 30);
-        _sellInLessThan5BackstagePass = new BackstagePasse("conguredBackstagePass", 4, 30);
-        _sellInLessThan10BackstagePass = new BackstagePasse("conguredBackstagePass", 9, 30);
+        _backstagePass = new BackstagePass("backstagePass", 30, 30);
+        _conguredBackstagePass = new BackstagePass("conguredBackstagePass", 30, 30, true);
+        _overSellInBackstagePass = new BackstagePass("conguredBackstagePass", -1, 30);
+        _sellInLessThan5BackstagePass = new BackstagePass("conguredBackstagePass", 4, 30);
+        _sellInLessThan10BackstagePass = new BackstagePass("conguredBackstagePass", 9, 30);
         _agedBrie = new AgedBrie("agedBrie", 30, 30);
         _conjuredAgedBrie = new AgedBrie("conjuredAgedBrie", 30, 30, true);
         _overQualityAgedBrie = new AgedBrie("item", 30, 50);
@@ -42,7 +42,6 @@ public class ShopTests
     [Test]
     public void Should_Build()
     {
-        new Shop();
         new Shop(new List<Item>());
     }
 

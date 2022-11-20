@@ -2,7 +2,7 @@ namespace GildedRose
 {
     public class Item
     {
-        public string Name { get; }
+        public string Name { get; set; }
         public int SellIn { get; protected set; }
         protected float _quality;
         public float Quality
@@ -10,7 +10,7 @@ namespace GildedRose
             get => _quality;
             set => ChangeQuality(value);
         }
-        public bool IsConjured { get; }
+        public bool IsConjured { get; set; }
 
         public Item(string name, int sellIn, float quality, bool isConjured = false)
         {
