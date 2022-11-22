@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace GildedRose
 {
-    public class Item
+    public abstract class Item
     {
         public string Name { get; set; }
         public int SellIn { get; protected set; }
@@ -12,7 +14,7 @@ namespace GildedRose
         }
         public bool IsConjured { get; set; }
 
-        public Item(string name, int sellIn, float quality, bool isConjured = false)
+        protected Item(string name, int sellIn, float quality, bool isConjured = false)
         {
             Name = name;
             SellIn = sellIn;

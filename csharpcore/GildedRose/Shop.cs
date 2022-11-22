@@ -2,29 +2,24 @@ namespace GildedRose
 {
     public class Shop
     {
-        public List<Item> Items { get; private set; }
-        public MongoDbService MongoDbConnection;
-        
-        public Shop(MongoDbService mongoDbConnection)
-        {
-            Items = mongoDbConnection.GetInventory();
-            MongoDbConnection = mongoDbConnection;
-        }
+        public List<Item> Items { get; set; }
+        private readonly IItemRepository _mongoItemsRepository;
 
-        public Shop(List<Item> items)
+        public Shop(IItemRepository mongoItemsRepository)
         {
-            Items = items;
+            _mongoItemsRepository = mongoItemsRepository;
+            Items = _mongoItemsRepository.GetInventory();
         }
 
         public void UpdateShop()
         {
             Items.ForEach(item => item.Update());
-            MongoDbConnection.SaveInventory(Items);
+            _mongoItemsRepository.SaveInventory(Items);
         }
-        
+
         public void SellIn(string name)
         {
-            MongoDbConnection.DeleteItem(name);
+            _mongoItemsRepository.DeleteItem(name);
             Items.Remove(Items.FindLast(x => x.Name == name) ?? throw new InvalidOperationException());
         }
     }
