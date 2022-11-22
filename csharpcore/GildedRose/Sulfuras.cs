@@ -2,7 +2,7 @@
 
 public class Sulfuras : Item
 {
-    public Sulfuras(string name, int sellIn, float quality, bool isConjured = false) : base(name, sellIn, quality,
+    public Sulfuras(string name, int sellIn, float quality, float price, bool isConjured = false) : base(name, sellIn, quality, price,
         isConjured)
     {
     }

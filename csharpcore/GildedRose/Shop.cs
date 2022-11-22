@@ -4,11 +4,12 @@ namespace GildedRose
     {
         public List<Item> Items { get; set; }
         private readonly IItemRepository _mongoItemsRepository;
-
-        public Shop(IItemRepository mongoItemsRepository)
+        public float Balance { get; set; } = 0;
+        
+        public Shop(IItemRepository mongoDbConnection)
         {
-            _mongoItemsRepository = mongoItemsRepository;
-            Items = _mongoItemsRepository.GetInventory();
+            Items = mongoDbConnection.GetInventory();
+            _mongoItemsRepository = mongoDbConnection;
         }
 
         public void UpdateShop()
@@ -17,7 +18,7 @@ namespace GildedRose
             _mongoItemsRepository.SaveInventory(Items);
         }
 
-        public void SellIn(string name)
+        public void SellItem(string name)
         {
             _mongoItemsRepository.DeleteItem(name);
             Items.Remove(Items.FindLast(x => x.Name == name) ?? throw new InvalidOperationException());

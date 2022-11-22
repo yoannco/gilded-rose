@@ -65,6 +65,8 @@ public class ShopTests
     [Test]
     public void UpdateShopOnAgedBrieWithQualityOverrunTest()
     {
+        _shop.UpdateShop();
+        
         Assert.That(_shop.Items.First(item => item.Name == "overQualityAgedBrie").Quality, Is.EqualTo(50));
     }
 

@@ -13,13 +13,15 @@ namespace GildedRose
             set => ChangeQuality(value);
         }
         public bool IsConjured { get; set; }
-
-        protected Item(string name, int sellIn, float quality, bool isConjured = false)
+        public float Price { get; set; }
+        
+        protected Item(string name, int sellIn, float quality, float price, bool isConjured = false)
         {
             Name = name;
             SellIn = sellIn;
             Quality = quality;
             IsConjured = isConjured;
+            Price = price;
         }
 
         public void Update()

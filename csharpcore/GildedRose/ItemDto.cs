@@ -17,5 +17,7 @@ public class ItemDto
     [DataMember]
     public bool IsConjured { get; set; }
     [DataMember]
+    public float Price { get; set; }
+    [DataMember]
     public string Type { get; set; }
 }

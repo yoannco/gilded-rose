@@ -54,10 +54,10 @@ public class MongoItemsRepository : IItemRepository
     {
         return itemDto.Type switch
         {
-            "AgedBries" => new AgedBrie(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.IsConjured),
-            "Sulfuras" => new Sulfuras(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.IsConjured),
-            "BackstagePass" => new BackstagePass(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.IsConjured),
-            _ => new GenericItem(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.IsConjured)
-        };
+            "AgedBries" => new AgedBrie(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured),
+            "Sulfuras" => new Sulfuras(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured),
+            "BackstagePass" => new BackstagePass(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured),
+            _ => new GenericItem(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured)
+            };
     }
 }
