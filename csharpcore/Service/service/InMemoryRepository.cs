@@ -1,4 +1,6 @@
-﻿namespace GildedRose.Repository;
+﻿using GildedRose;
+
+namespace Service.service;
 
 public class InMemoryRepository : IItemRepository
 {

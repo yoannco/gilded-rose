@@ -1,16 +1,18 @@
+using Application;
+
 namespace GildedRose;
 
 public class ConsoleUI
 {
-    public Shop Shop { get; set; } 
-    public ConsoleUI(Shop shop)
+    public ShopService ShopService { get; set; } 
+    public ConsoleUI(ShopService shopService)
     {
-        Shop = shop;
+        ShopService = shopService;
     }
     public void DisplayInventory()
     {
         Console.WriteLine("##### INVENTORY #####");
-        foreach (var item in Shop.Items)
+        foreach (var item in ShopService.Items)
         {
             Console.WriteLine($"Name : {item.Name} | Quality : {item.Quality} | SellIn : {item.SellIn}");
         }
@@ -18,7 +20,7 @@ public class ConsoleUI
 
     public void DisplayBalance()
     {
-        Console.WriteLine($"Balance : {Shop.Balance} €");
+        Console.WriteLine($"Balance : {ShopService.Balance} €");
     }
 
     public void UpdateInventory()
