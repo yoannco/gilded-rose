@@ -1,7 +1,7 @@
-using MongoDB.Bson;
+using GildedRose;
 using MongoDB.Driver;
 
-namespace GildedRose;
+namespace Service.service;
 
 public class MongoItemsRepository : IItemRepository
 {

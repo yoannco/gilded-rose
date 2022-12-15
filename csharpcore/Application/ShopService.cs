@@ -1,13 +1,16 @@
-namespace GildedRose
+using Application.Interfaces;
+using GildedRose;
+
+namespace Application
 {
-    public class Shop
+    public class ShopService : IShopService
     {
         public List<Item> Items { get; set; }
         private readonly IItemRepository _mongoItemsRepository;
         private readonly NotifyService _notifyService;
         public float Balance { get; set; } = 0;
         
-        public Shop(IItemRepository mongoDbConnection)
+        public ShopService(IItemRepository mongoDbConnection)
         {
             Items = mongoDbConnection.GetInventory();
             _mongoItemsRepository = mongoDbConnection;
