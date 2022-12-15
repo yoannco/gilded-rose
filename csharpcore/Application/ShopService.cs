@@ -7,14 +7,14 @@ namespace Application
     {
         public List<Item> Items { get; set; }
         private readonly IItemRepository _mongoItemsRepository;
-        private readonly NotifyService _notifyService;
+        private readonly INotifyService _notifyService;
         public float Balance { get; set; } = 0;
         
-        public ShopService(IItemRepository mongoDbConnection)
+        public ShopService(IItemRepository mongoDbConnection, INotifyService notifyService)
         {
             Items = mongoDbConnection.GetInventory();
             _mongoItemsRepository = mongoDbConnection;
-            _notifyService = new NotifyService();
+            _notifyService = notifyService;
         }
 
         public void UpdateShop()

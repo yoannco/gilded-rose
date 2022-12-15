@@ -1,3 +1,5 @@
+using Application.Interfaces;
+
 namespace GildedRose;
 
 using System;
@@ -5,7 +7,7 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account; 
 using Twilio.Types; 
 
-public class NotifyService
+public class NotifyService : INotifyService
 {
     private readonly string accountSid = "AC688bf5bd4e82901cf909d7e9231898cc";
     private readonly string authToken = "088194206f8f24726e20c6c096d668aa";

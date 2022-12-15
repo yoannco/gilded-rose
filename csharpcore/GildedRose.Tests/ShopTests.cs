@@ -1,4 +1,5 @@
 using Application;
+using Application.Interfaces;
 using Service.service;
 
 namespace GildedRose.Tests;
@@ -7,13 +8,14 @@ public class ShopTests
 {
     private ShopService _shopService;
     private IItemRepository _itemRepository;
+    private INotifyService _notifyService;
 
 
     [SetUp]
     public void Setup()
     {
         _itemRepository = new InMemoryRepository();
-        _shopService = new ShopService(_itemRepository);
+        _shopService = new ShopService(_itemRepository, _notifyService);
     }
 
     [Test]
