@@ -8,4 +8,10 @@ var mongoDbConnection =
 var notificationService = new NotifyService();
 var shop = new ShopService(mongoDbConnection, notificationService);
 var console = new ConsoleUI(shop);
-console.DisplayBalance();
+
+while (true)
+{
+    console.Menu();
+    Console.ReadKey();
+    Console.Clear();
+}
