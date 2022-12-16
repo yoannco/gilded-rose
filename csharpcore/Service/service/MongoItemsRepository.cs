@@ -1,3 +1,4 @@
+using ClassLibrary1;
 using GildedRose;
 using MongoDB.Driver;
 
@@ -21,6 +22,7 @@ public class MongoItemsRepository : IItemRepository
         {
             items.Add(ParseItemByType(itemDto));
         }
+
         return items;
     }
 
@@ -29,11 +31,11 @@ public class MongoItemsRepository : IItemRepository
         var collection = MongoClient.GetCollection<ItemDto>("items");
         return ParseItemByType(collection.Find($"{{ Name: '{name}' }}").SingleAsync().Result);
     }
-    
+
     public void SaveInventory(List<Item> items)
     {
         var collection = MongoClient.GetCollection<ItemDto>("items");
-        
+
         items.ForEach(item =>
         {
             var filter = Builders<ItemDto>.Filter.Eq(x => x.Name, item.Name);
@@ -42,7 +44,7 @@ public class MongoItemsRepository : IItemRepository
             collection.UpdateOne(filter, update);
         });
     }
-    
+
     public void DeleteItem(string name)
     {
         var collection = MongoClient.GetCollection<ItemDto>("items");
@@ -55,9 +57,9 @@ public class MongoItemsRepository : IItemRepository
         return itemDto.Type switch
         {
             "AgedBries" => new AgedBrie(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured),
-            "Sulfuras" => new Sulfuras(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured),
+            "Sulfuras" => new Legendary(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.Attack, itemDto.Defense, itemDto.IsConjured),
             "BackstagePass" => new BackstagePass(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured),
-            _ => new GenericItem(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.IsConjured)
-            };
+            _ => new GenericItem(itemDto.Name, itemDto.SellIn, itemDto.Quality, itemDto.Price, itemDto.Attack, itemDto.Defense, itemDto.IsConjured)
+        };
     }
 }

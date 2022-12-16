@@ -1,4 +1,5 @@
-﻿using GildedRose;
+﻿using ClassLibrary1;
+using GildedRose;
 
 namespace Service.service;
 
@@ -6,13 +7,13 @@ public class InMemoryRepository : IItemRepository
 {
     private List<Item> _items = new()
     {
-        new GenericItem("item", 30, 30, 1),
-        new GenericItem("conjuredItem", 30, 30, 1, true),
-        new GenericItem("sellInOverrunItem", -1, 30, 1),
-        new GenericItem("conjuredSellInOverrunItem", -1, 30, 1, true),
-        new GenericItem("overQualityItem", 30, 0, 1),
-        new Sulfuras("sulfuras", 30, 30, 1),
-        new Sulfuras("conjuredSulfuras", 30, 30, 1, true),
+        new GenericItem("item", 30, 30, 1, 3, 5),
+        new GenericItem("conjuredItem", 30, 30, 1, 3, 5, true),
+        new GenericItem("sellInOverrunItem", -1, 30, 1, 3, 5),
+        new GenericItem("conjuredSellInOverrunItem", -1, 30, 1, 3, 5, true),
+        new GenericItem("overQualityItem", 30, 0, 1, 3, 5),
+        new Legendary("sulfuras", 30, 30, 1, 3, 5),
+        new Legendary("conjuredSulfuras", 30, 30, 1, 3, 5, true),
         new BackstagePass("backstagePass", 30, 30, 1),
         new BackstagePass("conguredBackstagePass", 30, 30, 1, true),
         new BackstagePass("overSellInBackstagePass", -1, 30, 1),
@@ -22,6 +23,7 @@ public class InMemoryRepository : IItemRepository
         new AgedBrie("conjuredAgedBrie", 30, 30, 1, true),
         new AgedBrie("overQualityAgedBrie", 30, 50, 1),
     };
+
     public List<Item> GetInventory()
     {
         return _items;

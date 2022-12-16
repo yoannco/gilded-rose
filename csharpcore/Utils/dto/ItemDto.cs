@@ -15,6 +15,10 @@ public class ItemDto
     [DataMember]
     public float Quality { get; set; }
     [DataMember]
+    public int Attack { get; set; }
+    [DataMember]
+    public int Defense { get; set; }
+    [DataMember]
     public bool IsConjured { get; set; }
     [DataMember]
     public float Price { get; set; }
