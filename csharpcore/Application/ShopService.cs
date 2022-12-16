@@ -26,8 +26,15 @@ namespace Application
         public void SellItem(string name)
         {
             _mongoItemsRepository.DeleteItem(name);
-            Items.Remove(Items.FindLast(x => x.Name == name) ?? throw new InvalidOperationException());
-            _notifyService.NotifyWhatsapp($"Vente de l'item : {name}", "+33779826398");
+            var item = Items.FindLast(x => x.Name == name) ?? throw new InvalidOperationException();
+            AddGold(item.Price);
+            Items.Remove(item);
+            _notifyService.NotifyPhone($"Vente de l'item : {name}", "+33779826398");
+        }
+
+        private void AddGold(float price)
+        {
+            Balance += price;
         }
     }
 }

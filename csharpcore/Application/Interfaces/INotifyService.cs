@@ -2,5 +2,5 @@ namespace Application.Interfaces;
 
 public interface INotifyService
 {
-    public void NotifyWhatsapp(string message, string phoneNumber);
+    public void NotifyPhone(string message, string phoneNumber);
 }

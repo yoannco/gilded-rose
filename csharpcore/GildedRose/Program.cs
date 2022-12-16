@@ -7,7 +7,8 @@ var mongoDbConnection =
 
 var notificationService = new NotifyService();
 var shop = new ShopService(mongoDbConnection, notificationService);
-var console = new ConsoleUI(shop);
+var bid = new BidService(shop);
+var console = new ConsoleUI(shop, bid);
 
 while (true)
 {
