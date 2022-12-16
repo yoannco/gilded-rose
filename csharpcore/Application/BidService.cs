@@ -1,8 +1,9 @@
+using Application.Interfaces;
 using GildedRose;
 
 namespace Application;
 
-public class BidService
+public class BidService : IBidService
 {
     public int Counter { get; set; }
     public Item Item { get; set; }
