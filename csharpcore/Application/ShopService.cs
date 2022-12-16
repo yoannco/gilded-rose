@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using ClassLibrary1;
 using GildedRose;
 
 namespace Application
@@ -21,6 +22,14 @@ namespace Application
         {
             Items.ForEach(item => item.Update());
             _mongoItemsRepository.SaveInventory(Items);
+
+            foreach (var item in Items)
+            {
+                if (item is RelicItem)
+                {
+                    AddGold(100);
+                }
+            }
         }
 
         public void SellItem(string name)

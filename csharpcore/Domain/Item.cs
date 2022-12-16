@@ -24,7 +24,7 @@ namespace GildedRose
             Price = price;
         }
 
-        public void Update()
+        public virtual void Update()
         {
             UpdateSellIn();
             UpdateQuality();
