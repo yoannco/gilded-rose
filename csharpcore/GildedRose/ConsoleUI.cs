@@ -68,7 +68,16 @@ public class ConsoleUI
     {
         Console.WriteLine("Nom de l'item :");
         var name = Console.ReadLine();
-        ShopService.SellItem(name);
+        try
+        {
+            ShopService.SellItem(name);
+            Console.WriteLine($"Item {name} vendu et envoie d'une notification par SMS");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Item invalide");
+            throw;
+        }
     }
     
     private void CreateBid()
